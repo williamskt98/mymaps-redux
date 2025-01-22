@@ -4,7 +4,6 @@ import {
     APIProvider,
     Map,
     AdvancedMarker,
-    Pin,
     InfoWindow
 } from "@vis.gl/react-google-maps";
 import { useState } from "react";
@@ -24,7 +23,7 @@ export default function Intro() {
                     <AdvancedMarker position={position} onClick={() => setOpen(true)}>
                     </AdvancedMarker>
 
-                    { open && <InfoWindow position={position} onCloseClick={() => setOpen(false)}><p>I'm in Hamburg</p></InfoWindow> }
+                    { open && <InfoWindow position={position} onCloseClick={() => setOpen(false)}><p>Hamburg</p></InfoWindow> }
                 </Map>
             </div>
         </APIProvider>
