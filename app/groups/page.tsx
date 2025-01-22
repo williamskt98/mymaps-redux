@@ -1,7 +1,6 @@
 "use client";
 
-import { 
-    APIProvider,
+import {
     Map,
     AdvancedMarker,
     InfoWindow
@@ -10,6 +9,7 @@ import { useState } from "react";
 import placeGroups from "../../data/places";
 import "./groups.css";
 import { Button } from "@heroui/button";
+import MapsAPIProvider from "@/components/MapsAPIProvider/MapsAPIProvider";
 
 export default function Groups() {
     const position = { lat: 36.34109426533658, lng: -86.53533220690348 };
@@ -17,7 +17,7 @@ export default function Groups() {
     const [selected, setSelected] = useState("Barbecue");
 
     return (
-        <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string}>
+        <MapsAPIProvider>
             <div style={{ height: '90vh' }}>
                 <Map 
                     defaultZoom={15} 
@@ -49,6 +49,6 @@ export default function Groups() {
                 <Button color="primary" onPress={() => setSelected("Barbecue")}>Barbecue</Button>
                 <Button color="primary" onPress={() => setSelected("Fancy")}>Fancy</Button>
             </div>
-        </APIProvider>
+        </MapsAPIProvider>
     );
 }

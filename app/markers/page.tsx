@@ -1,7 +1,6 @@
 "use client";
 
 import {
-    APIProvider,
     Map,
     useMap,
     AdvancedMarker
@@ -10,15 +9,16 @@ import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import type { Marker } from "@googlemaps/markerclusterer";
 import { useEffect, useState, useRef } from "react";
 import trees from "../../data/trees";
+import MapsAPIProvider from "@/components/MapsAPIProvider/MapsAPIProvider";
 
 export default function Intro() {
     return (
         <div style={{height: '100vh'}}>
-            <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string}>
+            <MapsAPIProvider>
                 <Map defaultCenter={{ lat: 43.64, lng: -79.41 }} defaultZoom={10} mapId={process.env.NEXT_PUBLIC_MAP_ID}>
                     <Markers points={trees}/>
                 </Map>
-            </APIProvider>
+            </MapsAPIProvider>
         </div>
     );
 }

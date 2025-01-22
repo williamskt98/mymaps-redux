@@ -1,7 +1,7 @@
 "use client";
 
-import { 
-    APIProvider,
+import MapsAPIProvider from "@/components/MapsAPIProvider/MapsAPIProvider";
+import {
     Map,
     AdvancedMarker,
     InfoWindow
@@ -13,7 +13,7 @@ export default function Intro() {
     const [open, setOpen] = useState(false);
 
     return (
-        <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string}>
+        <MapsAPIProvider>
             <div style={{ height: '100vh' }}>
                 <Map 
                     defaultZoom={9} 
@@ -26,6 +26,6 @@ export default function Intro() {
                     { open && <InfoWindow position={position} onCloseClick={() => setOpen(false)}><p>Hamburg</p></InfoWindow> }
                 </Map>
             </div>
-        </APIProvider>
+        </MapsAPIProvider>
     );
 }
