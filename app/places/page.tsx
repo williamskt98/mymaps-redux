@@ -12,26 +12,8 @@ export default function Places() {
     const [markerRef, marker] = useAdvancedMarkerRef();
     const [isOpen, setIsOpen] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [selected, setSelected] = useState("Barbecue");
 
-    type Place = {
-        key: string | undefined;
-        name: string | undefined;
-        lat: number;
-        lng: number;
-    };
-
-    const placeGroups: { [key: string]: Place[] } = {
-        bbq: [
-            {key: "edleys", name: "Edley's Bar-B-Que", lat: 36.34109426533658, lng: -86.53344393185215}
-        ],
-        fancy: [
-            {key: "albertos", name: "Alberto's", lat: 36.341958471987326, lng: -86.5136170438133},
-            {key: "chostraw", name: "Chocolate Covered Strawberry", lat: 36.335390260936265, lng: -86.54387235997649}
-        ]
-    }
-
-    const placeGroupsRaw: { [key: string]: google.maps.places.PlaceResult[] } = {
+    const placeGroups: { [key: string]: google.maps.places.PlaceResult[] } = {
         bbq: [],
         fancy: []
     }
@@ -57,27 +39,7 @@ export default function Places() {
         }
     }
 
-    /*const myReducer = (state: {[key: string]: Place[]}, action: GroupAction) => {
-        const {type, category, place} = action;
-
-        if (!place) return state;
-
-        switch(action.type.toLowerCase()) {
-            case "add":
-                let newPlace: Place = {key: "", name: "", lat: 0, lng: 0};
-
-                if (place.place_id) newPlace.key = place.place_id
-                else newPlace.key = place.name
-
-                state[category].push(place);
-                return state;
-            default:
-                return state;
-        }
-    }*/
-
-    const [groups2, setGroups] = useState<{[key: string]: Place[]}>(placeGroups);
-    const [groups, dispatch] = useReducer(newReducer, placeGroupsRaw);
+    const [groups, dispatch] = useReducer(newReducer, placeGroups);
     
 
     useEffect(() => {
@@ -127,14 +89,6 @@ export default function Places() {
                         }
                         return <></>
                     })
-                /* Display Saved Markers
-                    groups.map(placeGroup => {
-                        if (placeGroup.category === selected) {
-                            return placeGroup.places.map(point => (
-                                <AdvancedMarker position={point} key={point.key}></AdvancedMarker>
-                            ))
-                        }
-                    })*/
                 }
             </Map>
             {isLoaded && 
