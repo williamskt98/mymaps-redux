@@ -1,3 +1,5 @@
+"use client";
+
 type RawPlace = [string, number, number];
 type RawPlaceGroup = [string, Place[]];
 
@@ -27,6 +29,19 @@ const placeGroups: PlaceGroup[] = [
         {key: "chostraw", name: "Chocolate Covered Strawberry", lat: 36.335390260936265, lng: -86.54387235997649}
     ]}
 ]
+
+const placeGroups_new: { [key: string]: Place[] } = {
+    bbq: [
+        {key: "edleys", name: "Edley's Bar-B-Que", lat: 36.34109426533658, lng: -86.53344393185215}
+    ],
+    fancy: [
+        {key: "albertos", name: "Alberto's", lat: 36.341958471987326, lng: -86.5136170438133},
+        {key: "chostraw", name: "Chocolate Covered Strawberry", lat: 36.335390260936265, lng: -86.54387235997649}
+    ]
+}
+
+const addToPlaceGroup = ({ place }: { place: Place }) => {
+}
 
 const formatted_: Place[] = places.map(([name, lat, lng]) => ({
   name,
